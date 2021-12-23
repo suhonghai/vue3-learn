@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+      .size {
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <template id="template">
+      <!-- 1. :style="{cssProperTyName:cssProperTyVal}" -->
+      <div :style="{color:'red',fontSize:large}">文字发生的</div>
+      <!-- 2.半丁data中的属性值，并且是一个对象 -->
+      <div :style="Cssstyle">afd</div>
+      <!-- 调用一个方法/计算属性返回一个对象 -->
+      <div :style="getCssstyle()">fdsfasd</div>
+
+      <button @click="size=!size">切换</button>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+      Vue.createApp({
+        template: '#template',
+        data() {
+          return {
+            large: 'large',
+            Cssstyle: {
+              color: 'red',
+              fontSize: 'large',
+            },
+          }
+        },
+        methods: {
+          getCssstyle() {
+            return {
+              color: 'red',
+              fontSize: 'large',
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

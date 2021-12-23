@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="template">
+        <!-- 1.数字 -->
+       <ul>
+        <li v-for="a in 9">{{msg + a}}</li>
+       </ul>
+        <!-- 2.对象 -->
+      <ul>
+        <li v-for="(value,key,index) in lists">
+            {{key+value}}
+        </li>
+      </ul>
+      <ul>
+          <li v-for="(a,idnex) in list">{{a}}</li>
+      </ul>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.createApp({
+            template:'#template',
+            data(){
+                return {
+                    msg:'hello word',
+                    lists:{
+                        a:2,
+                        b:3,
+                        c:4,
+                        d:5
+                    },
+                    list:[1,1,2,23,23,4]
+                }
+            }
+
+        }).mount("#app")
+    </script>
+</body>
+</html>
