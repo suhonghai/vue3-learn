@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="template">
+       <div>{{fullName}}</div>
+       <hr>
+       <div>{{firstName}}</div>
+       <div>{{lastName}}</div>
+       <button @click="edit">修改</button>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.createApp({
+            template:'#template',
+            data(){
+                return {
+                    msg:'hello word',
+                    firstName:'hello',
+                    lastName:'word'
+                }
+            },
+            computed:{
+                //函数的形式,实际是调用的计算属性的getter方法
+                // gullName(){
+                //     return this.firstName + '' + this.lastName
+                // },
+
+                //fullName 的get和set
+                fullName : {
+                    get: function(){
+                        return this.firstName + '' + this.lastName
+                    },
+                    set: function(newValue){
+                        console.log(newValue)
+                        this.firstName=newValue.split(' ')[0]
+                        this.lastName=newValue.split(' ')[1]
+                    }
+                }
+            },
+            methods:{
+                edit(){
+                    this.fullName='Kobe why'
+                }
+            }
+
+        }).mount("#app")
+    </script>
+</body>
+</html>

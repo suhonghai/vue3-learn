@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="template">
+        <button @click="edit">修改firstName</button>
+      <h2>{{fullNam}}</h2>
+      <h2>{{fullNam}}</h2>
+      <h2>{{fullNam}}</h2>
+      <hr>
+      <h3>{{getFullName()}}</h3>
+      <h3>{{getFullName()}}</h3>
+      <h3>{{getFullName()}}</h3>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.createApp({
+            template:'#template',
+            data(){
+                return {
+                    message:'hello word',
+                    firstName:'Kobe',
+                    lastName:'Bryant',
+                    score:80
+                }
+            },
+            computed:{
+                // 1.计算属性是有缓存的(多次引用的地方,计算属性只会计算一次)
+                // 2.计算属性会随着依赖的数据的改变重新计算
+                fullNam(){
+                    console.log('computed中的')
+                    return this.firstName + ' ' + this.lastName 
+                },
+              
+            },
+            methods:{
+                getFullName(){
+                    console.log('methods中的')
+
+                    return this.firstName + ' ' + this.lastName 
+                },
+                edit(){
+                    this.firstName = 'hello'
+                }
+            }
+
+        }).mount("#app")
+    </script>
+</body>
+</html>

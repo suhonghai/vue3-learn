@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="template">
+      问题:<input type="text" v-model="question">
+      <input v-model.lazy="question">
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.createApp({
+            template:'#template',
+            data(){
+                return {
+                    question:'hello word'
+                }
+            },
+            // question侦听的data中属性的名称
+            // newVal变化后的值
+            // 变化前的值
+            watch:{
+                question(newVal,oldVal){
+                    console.log(newVal,oldVal)
+                    //可以接受一部请求,axios请求
+                }
+            }
+
+        }).mount("#app")
+    </script>
+</body>
+</html>

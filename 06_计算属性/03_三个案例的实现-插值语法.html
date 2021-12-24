@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="template">
+      <h2>{{fullNam}}</h2>
+      <h2>{{result}}</h2>
+     <div>{{reverse}}</div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.createApp({
+            template:'#template',
+            data(){
+                return {
+                    message:'hello word',
+                    firstName:'Kobe',
+                    lastName:'Bryant',
+                    score:80
+                }
+            },
+            computed:{
+                fullNam(){
+                    return this.firstName + ' ' + this.lastName 
+                },
+                result(){
+                    return this.score > 80 ? '及格' : '不及格'
+                },
+                reverse(){
+                   return  this.message.split(' ').reverse().join(' ')
+                }
+            },
+
+        }).mount("#app")
+    </script>
+</body>
+</html>
